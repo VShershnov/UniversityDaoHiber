@@ -98,25 +98,20 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
     }    
    
     public T persist(T object) throws PersistException {
-        if (object.getId() != null)
-            throw new PersistException("Object is already persist.");
         T persistInstance;
         // Добавляем запись
         String sql = getCreateQuery();
-        try (Connection connection = daoFactory.getConnection();
-        	PreparedStatement statement = connection.prepareStatement(sql)) {
-            prepareStatementForInsert(statement, object);
-	            int count = statement.executeUpdate();
-	            if (count != 1) 
-	                throw new PersistException("On persist modify more then 1 record: " + count);
-        } catch (Exception e) {
-            throw new PersistException(e);
-        }
-        // Получаем только что вставленную запись
-        sql = getSelectQuery() + " WHERE id = last_insert_id();";
-        try (Connection connection = daoFactory.getConnection();
+        try (Connection connection = daoFactory.getConnection()) {
         	PreparedStatement statement = connection.prepareStatement(sql);
-        	ResultSet rs = statement.executeQuery()) {            
+            prepareStatementForInsert(statement, object);
+	        int count = statement.executeUpdate();
+	        if (count != 1) 
+	        	throw new PersistException("On persist modify more then 1 record: " + count);
+	         statement.close();
+	    // Получаем только что вставленную запись
+        sql = getSelectQuery() + " WHERE id = last_insert_rowid();";
+        statement = connection.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();            
             List<T> list = parseResultSet(rs);
             if ((list == null) || (list.size() != 1))
                 throw new PersistException("Exception on findByPK new persist data.");
@@ -130,12 +125,9 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
     public void delete(T object) throws PersistException {
         String sql = getDeleteQuery();
         try (Connection connection = daoFactory.getConnection();
-        	PreparedStatement statement = connection.prepareStatement(sql)) {
-            try {
-                statement.setObject(1, object.getId());
-            } catch (Exception e) {
-                throw new PersistException(e);
-            }
+        	PreparedStatement statement = connection.prepareStatement(sql)) {            
+            
+        	statement.setObject(1, object.getId());           
             int count = statement.executeUpdate();
             if (count != 1)
                 throw new PersistException("On delete modify more then 1 record: " + count);
