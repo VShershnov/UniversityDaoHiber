@@ -3,7 +3,9 @@ package test.dao;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.logging.LogManager;
 
+import main.Main;
 import main.dao.DaoFactory;
 import main.dao.PersistException;
 import main.dao.SqLiteRoomDao;
@@ -27,9 +29,13 @@ public class RoomDAOTest {
 	@Before
 	public void setUpBefore() throws PersistException{
 		try {
+			LogManager.getLogManager().readConfiguration(
+					RoomDAOTest.class.getResourceAsStream("/logging.properties"));     
+	            
 			daoFactory = new DaoFactory();
 	        dao = daoFactory.getRoomDao();
 	    } catch (Exception e) {
+	    	System.err.println("Could not setup logger configuration: " + e.toString());
             throw new PersistException(e);
         }		
 	}
