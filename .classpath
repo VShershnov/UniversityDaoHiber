@@ -6,5 +6,9 @@
 	<classpathentry kind="lib" path="C:/Users/user/workspace/BDLib/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/user/workspace/BDLib/sqlite-jdbc-3.7.2-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/user/workspace/BDLib/sqlite-jdbc-3.7.2-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/apache-log4j-2.8.2-bin/log4j-api-2.8.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/apache-log4j-2.8.2-bin/log4j-api-2.8.2-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/apache-log4j-2.8.2-bin/log4j-core-2.8.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/apache-log4j-2.8.2-bin/log4j-core-2.8.2-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

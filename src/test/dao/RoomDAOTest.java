@@ -28,10 +28,7 @@ public class RoomDAOTest {
 	
 	@Before
 	public void setUpBefore() throws PersistException{
-		try {
-			LogManager.getLogManager().readConfiguration(
-					RoomDAOTest.class.getResourceAsStream("/logging.properties"));     
-	            
+		try {   
 			daoFactory = new DaoFactory();
 	        dao = daoFactory.getRoomDao();
 	    } catch (Exception e) {
@@ -43,8 +40,7 @@ public class RoomDAOTest {
 	@After
 	public void tearDown(){
 		daoFactory = null;
-		dao = null;
-		
+		dao = null;		
 	}
 
 	@Test
@@ -79,17 +75,6 @@ public class RoomDAOTest {
 	    Assert.assertNotNull(list);
 	    Assert.assertTrue(list.size() > 0);	
 	}
-
-	/*
-	@Test
-	public void testPersist() {
-		 Assert.assertNull("Id befor persist is not null.", notPersistedDto.getId());
-
-	        notPersistedDto = dao().persist(notPersistedDto);
-
-	        Assert.assertNotNull("After persist id is null.", notPersistedDto.getId());
-	}
-*/	
 
 	@Test
 	public void testDelete() throws PersistException {

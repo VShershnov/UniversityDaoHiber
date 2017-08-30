@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * јбстрактный класс предоставл€ющий базовую реализацию CRUD операций с использованием JDBC.
  *
@@ -13,9 +16,10 @@ import java.util.List;
  */
 public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Integer>{
 
-	
 	private DaoFactory daoFactory;
 
+	private final  Logger log = LogManager.getLogger(this.getClass().getPackage().getName());
+	
     /**
      * ¬озвращает sql запрос дл€ получени€ всех записей.
      * <p/>
@@ -66,20 +70,35 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
         List<T> list;
         String sql = getSelectQuery();
         sql += " WHERE id = ?";
+        
+        log.info("Get object from DB by key "+ key);
+        
+        log.debug("Open connection & Create prepared statement");
         try (Connection connection = daoFactory.getConnection();
         	PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, key);
+            
+            log.debug("Get result set");
             ResultSet rs = statement.executeQuery();
+            
+            log.debug("Parse result set");
             list = parseResultSet(rs);
+            
+        log.debug("statement&connection closed");   
         } catch (Exception e) {
+        	log.debug("statement&connection closed");
+        	log.error("Cannot find Object by id ", e);
             throw new PersistException(e);
         }
         
         if (list == null || list.size() == 0) {
+        	log.info("returned object = null");
             return null;
         }
         if (list.size() > 1) {
-            throw new PersistException("Received more than one record.");
+        	String s = "Received more than one record.";
+        	log.error(s);
+            throw new PersistException(s);
         }
         return list.iterator().next();
     }
@@ -87,11 +106,21 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
     public List<T> getAll() throws PersistException {
         List<T> list;
         String sql = getSelectQuery();
+        
+        log.info("Get all objects from DB");
+        
+        log.debug("Open connection & Create prepared statement & Get result set");
         try (Connection connection = daoFactory.getConnection();
         	PreparedStatement statement = connection.prepareStatement(sql);
-        	ResultSet rs = statement.executeQuery()) {            
+        	ResultSet rs = statement.executeQuery()) {
+        	
+        	log.debug("Parse result set");
             list = parseResultSet(rs);
+            
+            log.debug("resultset & statement & connection closed");   
         } catch (Exception e) {
+        	log.debug("resultset & statement & connection closed");  
+        	log.error("Cannot return any Object ", e);
             throw new PersistException(e);
         }
         return list;
@@ -99,39 +128,77 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
    
     public T persist(T object) throws PersistException {
         T persistInstance;
+        
         // ƒобавл€ем запись
         String sql = getCreateQuery();
+        
+        log.info("Create Object " + object.toString());
+        
+        log.debug("Open connection");
         try (Connection connection = daoFactory.getConnection()) {
+        	log.debug("Create prepared statement");
         	PreparedStatement statement = connection.prepareStatement(sql);
-            prepareStatementForInsert(statement, object);
+        	prepareStatementForInsert(statement, object);
+        	
+        	log.debug("Get count of inserted result set");
 	        int count = statement.executeUpdate();
-	        if (count != 1) 
-	        	throw new PersistException("On persist modify more then 1 record: " + count);
-	         statement.close();
-	    // ѕолучаем только что вставленную запись
-        sql = getSelectQuery() + " WHERE id = last_insert_rowid();";
-        statement = connection.prepareStatement(sql);
-        ResultSet rs = statement.executeQuery();            
+	        
+	        if (count != 1){
+	        	String s = "On persist modify more then 1 record: ";
+	        	log.error(s + count);
+	        	throw new PersistException(s + count);
+	        }	        	
+	         
+	        log.debug("statement closed");
+	        statement.close();
+	        
+	        // ѕолучаем только что вставленную запись
+	        sql = getSelectQuery() + " WHERE id = last_insert_rowid();";
+        
+	        log.debug("Create prepared statement");
+	        statement = connection.prepareStatement(sql);
+	        log.debug("Get result set");
+	        ResultSet rs = statement.executeQuery();            
             List<T> list = parseResultSet(rs);
-            if ((list == null) || (list.size() != 1))
-                throw new PersistException("Exception on findByPK new persist data.");
+            if ((list == null) || (list.size() != 1)){
+            	String s = "Exception on findByPK new persist data.";
+            	log.error(s);
+                throw new PersistException(s);
+            }
             persistInstance = list.iterator().next();
+        
+        log.debug("connection closed");
         } catch (Exception e) {
-            throw new PersistException(e);
+        	log.debug("connection closed");
+        	log.error("Cannot insert Object ", e);
+            throw new PersistException(e);            
         }
         return persistInstance;
     }
    
     public void delete(T object) throws PersistException {
         String sql = getDeleteQuery();
+        
+        log.info("Delete Object " + object.toString());
+        
+        log.debug("Open connection & Create prepared statement");
         try (Connection connection = daoFactory.getConnection();
         	PreparedStatement statement = connection.prepareStatement(sql)) {            
             
-        	statement.setObject(1, object.getId());           
+        	statement.setObject(1, object.getId());
+        	
+        	log.debug("Get count of deleted result set");
             int count = statement.executeUpdate();
-            if (count != 1)
-                throw new PersistException("On delete modify more then 1 record: " + count);
+           	if (count != 1){
+            	String s = "On delete modify more then 1 record: ";
+        		log.error(s);
+                throw new PersistException(s + count);
+           	}
+        
+        log.debug("statement & connection closed");
         } catch (Exception e) {
+        	log.debug("statement & connection closed");
+        	log.error("Cannot delete Object " + object.toString(), e);
             throw new PersistException(e);
         }
     }
@@ -139,13 +206,26 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
    
     public void update(T object) throws PersistException {
         String sql = getUpdateQuery();
+        
+        log.info("Update Object " + object.toString());
+        
+        log.debug("Open connection & Create prepared statement");
         try (Connection connection = daoFactory.getConnection();
         	PreparedStatement statement = connection.prepareStatement(sql);) {
 	            prepareStatementForUpdate(statement, object); // заполнение аргументов запроса оставим на совесть потомков
+	            
+	            log.debug("Get count of updates result set");
 	            int count = statement.executeUpdate();
-	            if (count != 1)
-	                throw new PersistException("On update modify more then 1 record: " + count);
+	            if (count != 1){
+	            	String s = "On update modify more then 1 record: ";
+	        		log.error(s);
+	                throw new PersistException(s + count);
+	            }
+	    
+	    log.debug("statement & connection closed");
         } catch (Exception e) {
+        	log.debug("statement & connection closed");
+        	log.error("Cannot update Object " + object.toString(), e);
             throw new PersistException(e);
         }
     }

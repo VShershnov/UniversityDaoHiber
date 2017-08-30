@@ -4,14 +4,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import main.university.Room;
 
 public class SqLiteRoomDao extends AbstractJDBCDao<Room, Integer>{
 	
-	private static Logger log = Logger.getLogger(SqLiteRoomDao.class.getName());
-
+	private final  Logger log = LogManager.getLogger(this.getClass().getPackage().getName());
+	
 	public SqLiteRoomDao(DaoFactory daoFactory) {
 		super(daoFactory);
 	}
@@ -46,8 +49,11 @@ public class SqLiteRoomDao extends AbstractJDBCDao<Room, Integer>{
 	@Override
 	protected List<Room> parseResultSet(ResultSet rs) throws PersistException {
 		List<Room> result = new ArrayList<Room>();
-        try {
+		log.debug("Parse Result Set from DB to Object's List");
+		try {
             while (rs.next()) {
+            	if(log.isEnabled(Level.TRACE))
+            		log.trace("Parse row " + rs.getInt("id") + " to Room Object");
             	Room room = new Room();
             	room.setId(rs.getInt("id"));
             	room.setCapacity(rs.getInt("capacity"));
@@ -55,6 +61,7 @@ public class SqLiteRoomDao extends AbstractJDBCDao<Room, Integer>{
                 result.add(room);
             }
         } catch (Exception e) {
+        	log.error("Cannot parse Object ", e);
             throw new PersistException(e);
         }
         return result;
@@ -63,10 +70,12 @@ public class SqLiteRoomDao extends AbstractJDBCDao<Room, Integer>{
 	@Override
 	protected void prepareStatementForInsert(PreparedStatement statement, Room object) throws PersistException {
 		try {           
-            statement.setInt(1, object.getCapacity());
+			log.debug("Prepare Statement for insert to DB");
+			statement.setInt(1, object.getCapacity());
             statement.setString(2, object.getAddress());
         } catch (Exception e) {
-            throw new PersistException(e);
+        	log.error("Cannot create Statement for insert ", e);
+        	throw new PersistException(e);
         }		
 	}
 
@@ -74,11 +83,13 @@ public class SqLiteRoomDao extends AbstractJDBCDao<Room, Integer>{
 	protected void prepareStatementForUpdate(PreparedStatement statement,
 			Room object) throws PersistException {
 		try {
+			log.debug("Prepare Statement for update to DB");
 			statement.setInt(1, object.getCapacity());            
             statement.setString(2, object.getAddress());
             statement.setInt(3, object.getId());
         } catch (Exception e) {
-            throw new PersistException(e);
+        	log.error("Cannot create Statement for update ", e);
+        	throw new PersistException(e);
         }		
 	}
 }
