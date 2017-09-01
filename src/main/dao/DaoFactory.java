@@ -37,6 +37,10 @@ public class DaoFactory{
 	public SqLiteRoomDao getRoomDao() throws PersistException{
 		return new SqLiteRoomDao(this);
 	}
+	
+	public SqLiteCourseDao getCourseDao() throws PersistException{
+		return new SqLiteCourseDao(this);
+	}
 
 	public DaoFactory(){
 		try {

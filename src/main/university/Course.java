@@ -3,9 +3,10 @@ package main.university;
 import java.util.HashSet;
 import java.util.Set;
 
+import main.dao.Identified;
 import main.university.person.Professor;
 
-public class Course {
+public class Course implements Identified<Integer>{
 
 	//Course id and duration in hours
 	private Integer id;

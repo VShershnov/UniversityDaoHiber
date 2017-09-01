@@ -21,23 +21,23 @@ public class SqLiteRoomDao extends AbstractJDBCDao<Room, Integer>{
 
 	@Override
 	public String getSelectQuery() {
-		return "SELECT id, capacity, address FROM Room";
+		return "SELECT id, capacity, address FROM Rooms";
 	}
 
 	@Override
 	public String getCreateQuery() {
-		return "INSERT INTO Room (capacity, address) \n" +
+		return "INSERT INTO Rooms (capacity, address) \n" +
                 "VALUES (?, ?);";
 	}
 
 	@Override
 	public String getUpdateQuery() {
-		 return "UPDATE Room SET capacity = ?, address = ? WHERE id= ?;";
+		 return "UPDATE Rooms SET capacity = ?, address = ? WHERE id= ?;";
 	}
 
 	@Override
 	public String getDeleteQuery() {
-		 return "DELETE FROM Room WHERE id= ?;";
+		 return "DELETE FROM Rooms WHERE id= ?;";
 	}
 
 	public Room create(Integer capacity, String address) throws PersistException {

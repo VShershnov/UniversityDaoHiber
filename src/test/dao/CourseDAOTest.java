@@ -1,31 +1,30 @@
 package test.dao;
 
 import java.util.List;
+
 import main.dao.DaoFactory;
 import main.dao.PersistException;
-import main.dao.SqLiteRoomDao;
-import main.university.Room;
+import main.dao.SqLiteCourseDao;
+import main.university.Course;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+public class CourseDAOTest {
 
-
-public class RoomDAOTest {
+private DaoFactory daoFactory;
 	
-	private DaoFactory daoFactory;
+	private SqLiteCourseDao dao;
 	
-	private SqLiteRoomDao dao;
-	
-	private Room room;
+	private Course course;
 	
 	@Before
 	public void setUpBefore() throws PersistException{
 		try {   
 			daoFactory = new DaoFactory();
-	        dao = daoFactory.getRoomDao();
+	        dao = daoFactory.getCourseDao();
 	    } catch (Exception e) {
 	    	System.err.println("Could not setup logger configuration: " + e.toString());
             throw new PersistException(e);
@@ -41,27 +40,27 @@ public class RoomDAOTest {
 	@Test
 	public void testCreate() throws PersistException {
 		try {
-			room = dao.create(40, "Lviv");
+			course = dao.create("Java", 40);
 	    } catch (Exception e) {
             throw new PersistException(e);
         }
 	    
-		Assert.assertNotNull(room);
-	    Assert.assertNotNull(room.getId());
+		Assert.assertNotNull(course);
+	    Assert.assertNotNull(course.getId());
 	}
 
 	
 	@Test
 	public void testGetByPK() throws PersistException {
-		 int id = dao.create(43, "Lviv").getId();
-	     room = dao.getByPK(id);
-	        Assert.assertNotNull(room);
+		 int id = dao.create("JavaEE", 10).getId();
+		 course = dao.getByPK(id);
+	        Assert.assertNotNull(course);
 	}
 
 	@Test
 	public void testGetAll() throws PersistException{
 		
-	    List<Room> list;
+	    List<Course> list;
 	    try {
 	    	list = dao.getAll();
 	    } catch (Exception e) {
@@ -74,15 +73,15 @@ public class RoomDAOTest {
 	@Test
 	public void testDelete() throws PersistException {
 		try {
-			room = dao.create(30, "Rivne");	    
+			course = dao.create("JavaEE", 10);	    
 
-	        List<Room> list = dao.getAll();
+	        List<Course> list = dao.getAll();
 	        Assert.assertNotNull(list);
 
 	        int oldSize = list.size();
 	        Assert.assertTrue(oldSize > 0);
 
-	        dao.delete(room);
+	        dao.delete(course);
 
 	        list = dao.getAll();
 	        Assert.assertNotNull(list);
@@ -97,14 +96,13 @@ public class RoomDAOTest {
 
 	@Test
 	public void testUpdate() throws PersistException {
-		Room r = new Room(4, 15, "Chernivtsi");
+		Course c = new Course(4, "Math", 12);
 		try {
-			dao.update(r);
+			dao.update(c);
 	    } catch (Exception e) {
             throw new PersistException(e);
         }
 	    
-		Assert.assertTrue("not the same room", r.equals(dao.getByPK(r.getId())));
+		Assert.assertTrue("not the same room", c.equals(dao.getByPK(c.getId())));
 	}
-
 }
