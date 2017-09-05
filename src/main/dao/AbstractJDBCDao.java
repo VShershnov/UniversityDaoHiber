@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
  * Абстрактный класс предоставляющий базовую реализацию CRUD операций с использованием JDBC.
  *
  * @param <T>  тип объекта персистенции
+ * @param <K> тип связанного обьекта с обьектом персистенции
  * @param <PK> тип первичного ключа
  */
 public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Integer>{
@@ -26,6 +27,23 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
      * SELECT * FROM [Table]
      */
     public abstract String getSelectQuery();
+    
+    
+    /**
+     * Возвращает sql запрос для получения всех id первого связанного обьекта из таблицы связей ForeignKey.
+     * <p/>
+     * SELECT dependedObj1_id FROM [FK_Table] WHERE Instance_id = ?;
+     *  
+     */    
+    public abstract String getSelectDependedObj1Query();    
+    
+    /**
+     * Возвращает sql запрос для получения всех id второго связанного обьекта из таблицы связей ForeignKey.
+     * <p/>
+     * SELECT dependedObj2_id * FROM [FK_Table] WHERE Instance_id = ?;
+     *  
+     */    
+    public abstract String getSelectDependedObj2Query();
     
     /**
      * Возвращает sql запрос для вставки новой записи в базу данных.
@@ -54,6 +72,8 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
      * @throws PersistException 
      */
     protected abstract List<T> parseResultSet(ResultSet rs) throws PersistException;
+    
+    protected abstract List<Integer> parseDependenceResultSet(ResultSet rs) throws PersistException;
     
     /**
      * Устанавливает аргументы insert запроса в соответствии со значением полей объекта object.
@@ -103,6 +123,33 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
         return list.iterator().next();
     }
     
+    
+    public List<Integer> getInstanceallDepencedObj1(T object) throws PersistException {
+    	List<Integer> list;
+        String sql = getSelectDependedObj1Query();
+    	
+        log.info("Get all ids related to Instance " + object.toString() + " from DB");
+        
+        try (Connection connection = daoFactory.getConnection();
+            	PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, object.getId());
+                
+                log.debug("Get result set");
+                ResultSet rs = statement.executeQuery();
+                
+                log.debug("Parse result set");
+                list = parseDependenceResultSet(rs);
+                
+            log.debug("statement&connection closed");   
+            } catch (Exception e) {
+            	log.debug("statement&connection closed");
+            	log.error("Cannot find Instance rdepended Object ", e);
+                throw new PersistException(e);
+            }        
+    	return list;
+    }
+    
+    
     public List<T> getAll() throws PersistException {
         List<T> list;
         String sql = getSelectQuery();
@@ -125,7 +172,7 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
         }
         return list;
     }    
-   
+    
     public T persist(T object) throws PersistException {
         T persistInstance;
         

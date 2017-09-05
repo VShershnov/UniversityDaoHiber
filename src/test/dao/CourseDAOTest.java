@@ -69,6 +69,16 @@ private DaoFactory daoFactory;
 	    Assert.assertNotNull(list);
 	    Assert.assertTrue(list.size() > 0);	
 	}
+	
+	@Test
+	public void testgetInstanceallDepencedObj1() throws PersistException {
+		course = new Course(1,"JavaEE", 10);
+		
+		List<Integer> list = dao.getInstanceallDepencedObj1(course);
+
+		Assert.assertNotNull(list);
+	    Assert.assertTrue(list.size() > 0);
+	}
 
 	@Test
 	public void testDelete() throws PersistException {
@@ -102,7 +112,7 @@ private DaoFactory daoFactory;
 	    } catch (Exception e) {
             throw new PersistException(e);
         }
-	    
-		Assert.assertTrue("not the same room", c.equals(dao.getByPK(c.getId())));
+	    course = dao.getByPK(c.getId());
+		Assert.assertTrue("not the same course", c.equals(course));
 	}
 }
