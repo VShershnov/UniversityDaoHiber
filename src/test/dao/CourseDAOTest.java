@@ -6,6 +6,8 @@ import main.dao.DaoFactory;
 import main.dao.PersistException;
 import main.dao.SqLiteCourseDao;
 import main.university.Course;
+import main.university.Group;
+import main.university.person.Professor;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -71,15 +73,61 @@ private DaoFactory daoFactory;
 	}
 	
 	@Test
-	public void testgetInstanceallDepencedObj1() throws PersistException {
+	public void testGetInstanceAllDependentProfessorObj() throws PersistException {
 		course = new Course(1,"JavaEE", 10);
 		
-		List<Integer> list = dao.getInstanceallDepencedObj1(course);
+		List<Integer> list = dao.getInstanceAllDependentObj(course, Professor.class);
 
 		Assert.assertNotNull(list);
 	    Assert.assertTrue(list.size() > 0);
 	}
+	
+	@Test
+	public void testAddRemoveInstanceDependentProfessor() throws PersistException {
+		Course c = dao.getByPK(4);
+		Professor prof = new Professor(18, "Vitaly Shershnov");
+		
+		try {
+			dao.addInstanceDependentObj(c, prof);
+			List<Integer> list = dao.getInstanceAllDependentObj(c, Professor.class);
+			Assert.assertTrue("not the same course", list.contains(prof.getId()));
+			
+			dao.removeInstanceDependentObj(c, prof);
+			list = dao.getInstanceAllDependentObj(c, Professor.class);
+			Assert.assertFalse("not the same course", list.contains(prof.getId()));
+	    } catch (Exception e) {
+            throw new PersistException(e);
+        }
+	}
+	
+	@Test
+	public void testAddRemoveInstanceDependentGroup() throws PersistException {
+		Course c = dao.getByPK(4);
+		Group g = new Group(15, "FTZI");
+		
+		try {
+			dao.addInstanceDependentObj(c, g);
+			List<Integer> list = dao.getInstanceAllDependentObj(c, Group.class);
+			Assert.assertTrue("not the same group", list.contains(g.getId()));
+			
+			dao.removeInstanceDependentObj(c, g);
+			list = dao.getInstanceAllDependentObj(c, Group.class);
+			Assert.assertFalse("not the same group", list.contains(g.getId()));
+	    } catch (Exception e) {
+            throw new PersistException(e);
+        }
+	}
 
+	@Test
+	public void testGetInstanceAllDependentGroupObj() throws PersistException {
+		course = new Course(1,"JavaEE", 10);
+		
+		List<Integer> list = dao.getInstanceAllDependentObj(course, Group.class);
+
+		Assert.assertNotNull(list);
+	    Assert.assertTrue(list.size() > 0);
+	}
+	
 	@Test
 	public void testDelete() throws PersistException {
 		try {
@@ -109,10 +157,11 @@ private DaoFactory daoFactory;
 		Course c = new Course(4, "Math", 12);
 		try {
 			dao.update(c);
+			
+			course = dao.getByPK(c.getId());
+			Assert.assertTrue("not the same course", c.equals(course));
 	    } catch (Exception e) {
             throw new PersistException(e);
-        }
-	    course = dao.getByPK(c.getId());
-		Assert.assertTrue("not the same course", c.equals(course));
+        }	    
 	}
 }

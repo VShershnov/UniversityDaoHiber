@@ -91,5 +91,5 @@ public class SqLiteRoomDao extends AbstractJDBCDao<Room, Integer>{
         	log.error("Cannot create Statement for update ", e);
         	throw new PersistException(e);
         }		
-	}
+	}	
 }

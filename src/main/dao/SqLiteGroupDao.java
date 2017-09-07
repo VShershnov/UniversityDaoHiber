@@ -11,23 +11,23 @@ public class SqLiteGroupDao extends AbstractJDBCDao<Group, Integer>{
 	
 	@Override
 	public String getSelectQuery() {
-		return "SELECT id, name FROM 'Group'";
+		return "SELECT id, name FROM 'Groups'";
 	}
 
 	@Override
 	public String getCreateQuery() {
-		return "INSERT INTO 'Group' (name) \n" +
+		return "INSERT INTO 'Groups' (name) \n" +
                 "VALUES (?);";
 	}
 
 	@Override
 	public String getUpdateQuery() {
-		 return "UPDATE 'Group' SET name = ? WHERE id= ?;";
+		 return "UPDATE 'Groups' SET name = ? WHERE id= ?;";
 	}
 
 	@Override
 	public String getDeleteQuery() {
-		 return "DELETE FROM 'Group' WHERE id= ?;";
+		 return "DELETE FROM 'Groups' WHERE id= ?;";
 	}
 	
 	public Group create() throws PersistException{
@@ -75,5 +75,5 @@ public class SqLiteGroupDao extends AbstractJDBCDao<Group, Integer>{
         } catch (Exception e) {
             throw new PersistException(e);
         }		
-	}
+	}	
 }

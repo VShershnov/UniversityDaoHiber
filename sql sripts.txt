@@ -1,0 +1,4 @@
+select * from professors
+where id in (
+	select  professor_id from PROFESSORS_COURSES
+	where course_id = 2)
