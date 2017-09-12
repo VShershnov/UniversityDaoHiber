@@ -189,14 +189,18 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
         	PreparedStatement statement = connection.prepareStatement(sql)) {            
             
         	statement.setObject(1, object.getId());
+        	statement.setObject(1, object.getId());
+        	statement.setObject(1, object.getId());
         	
         	log.debug("Get count of deleted result set");
-            int count = statement.executeUpdate();
-           	if (count != 1){
+            statement.execute();
+           	/*
+            if (count != 1){
             	String s = "On delete modify more then 1 record: ";
         		log.error(s);
                 throw new PersistException(s + count);
            	}
+           	*/
         
         log.debug("statement & connection closed");
         } catch (Exception e) {

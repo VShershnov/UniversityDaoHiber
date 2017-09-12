@@ -37,25 +37,16 @@ public class SqLiteCourseDao extends AbstractJDBCDao<Course, Integer>{
 
 	@Override
 	public String getDeleteQuery() {
-		return "DELETE FROM Courses WHERE id= ?;";
+		return "DELETE FROM Courses WHERE id= ?;"
+				+ " DELETE FROM Professors_Courses WHERE course_id = ?;"
+				+ " DELETE FROM Groups_Courses WHERE course_id = ?;";
 	}
 
 	public Course create(String name, Integer duration) throws PersistException {
 		log.info("Creating new course " + name + " , duration=" + duration);
 		Course c = new Course(null, name, duration);
         return persist(c);
-	}
-	
-	
-/*	
-	public void removeCourseProfessor (Professor prof){
-		
-	}
-	
-	public void removeCourseGroup (Group group){
-		
-	}
-*/
+	}	
 	
 	@Override
 	protected List<Course> parseResultSet(ResultSet rs) throws PersistException {

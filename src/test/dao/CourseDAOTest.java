@@ -131,7 +131,8 @@ private DaoFactory daoFactory;
 	@Test
 	public void testDelete() throws PersistException {
 		try {
-			course = dao.create("JavaEE", 10);	    
+			course = dao.create("JavaEE", 10);
+			
 
 	        List<Course> list = dao.getAll();
 	        Assert.assertNotNull(list);
@@ -152,6 +153,53 @@ private DaoFactory daoFactory;
         }
 	}
 
+	@Test
+	public void testDeletefromCourseGroup() throws PersistException {
+		try {
+			course = dao.create("JavaEE", 10);
+			Group g = new Group(15, "FTZI");
+			Professor prof = new Professor(18, "Vitaly Shershnov");
+			dao.addInstanceDependentObj(course, g);
+			dao.addInstanceDependentObj(course, prof);
+			
+	        List<Course> listCourses = dao.getAll();
+	        Assert.assertNotNull(listCourses);
+
+	        List<Integer> listGroups = dao.getInstanceAllDependentObj(course, g.getClass());
+	        Assert.assertNotNull(listGroups);
+	        
+	        List<Integer> listProfessors = dao.getInstanceAllDependentObj(course, prof.getClass());
+	        Assert.assertNotNull(listProfessors);
+	        
+	        
+	        int oldSizeCourses = listCourses.size();
+	        Assert.assertTrue(oldSizeCourses > 0);
+	        int oldSizeGroups = listGroups.size();
+	        Assert.assertTrue(oldSizeGroups > 0);	        
+	        int oldSizeProfessors = listProfessors.size();
+	        Assert.assertTrue(oldSizeProfessors > 0);
+	        
+	        dao.delete(course);
+
+	        listCourses = dao.getAll();
+	        Assert.assertNotNull(listCourses);
+	        listGroups = dao.getInstanceAllDependentObj(course, g.getClass());
+	        Assert.assertNotNull(listGroups);
+	        listProfessors = dao.getInstanceAllDependentObj(course, prof.getClass());
+	        Assert.assertNotNull(listProfessors);
+	        
+	        int newSizeCourses = listCourses.size();
+	        Assert.assertEquals(1, oldSizeCourses - newSizeCourses);
+	        int newSizeGroups = listGroups.size();
+	        Assert.assertEquals(1, oldSizeGroups - newSizeGroups);
+	        int newSizeProfessor = listProfessors.size();
+	        Assert.assertEquals(1, oldSizeProfessors - newSizeProfessor);	        
+	        
+		} catch (Exception e) {
+            throw new PersistException(e);
+        }
+	}
+	
 	@Test
 	public void testUpdate() throws PersistException {
 		Course c = new Course(4, "Math", 12);
