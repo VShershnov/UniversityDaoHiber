@@ -1,0 +1,498 @@
+2017-09-05T20:07:42,348 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:07:42,380 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:07:42,380 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:07:42,976 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:07:42,980 [DEBUG] (    SqLiteCourseDao.java: 133) - Prepare Statement for insert to DB
+2017-09-05T20:07:42,980 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:07:43,150 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:07:43,151 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:07:43,152 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:07:43,153 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:07:43,153 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:07:43,158 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 8
+2017-09-05T20:07:43,159 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:07:43,160 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:07:43,161 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:07:43,161 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:07:43,161 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:07:43,163 [INFO ] (    AbstractJDBCDao.java: 131) - Get all ids related to Instance Course1 [name=JavaEE, duration=10, groups=0, professors=0] from DB
+2017-09-05T20:07:43,176 [DEBUG] (    AbstractJDBCDao.java: 145) - statement&connection closed
+2017-09-05T20:07:43,177 [ERROR] (    AbstractJDBCDao.java: 146) - Cannot find Instance rdepended Object 
+java.sql.SQLException: [SQLITE_ERROR] SQL error or missing database (near "FROM": syntax error)
+	at org.sqlite.DB.newSQLException(DB.java:383) ~[sqlite-jdbc-3.7.2.jar:?]
+	at org.sqlite.DB.newSQLException(DB.java:387) ~[sqlite-jdbc-3.7.2.jar:?]
+	at org.sqlite.DB.throwex(DB.java:374) ~[sqlite-jdbc-3.7.2.jar:?]
+	at org.sqlite.NativeDB.prepare(Native Method) ~[sqlite-jdbc-3.7.2.jar:?]
+	at org.sqlite.DB.prepare(DB.java:123) ~[sqlite-jdbc-3.7.2.jar:?]
+	at org.sqlite.PrepStmt.<init>(PrepStmt.java:42) ~[sqlite-jdbc-3.7.2.jar:?]
+	at org.sqlite.Conn.prepareStatement(Conn.java:404) ~[sqlite-jdbc-3.7.2.jar:?]
+	at org.sqlite.Conn.prepareStatement(Conn.java:399) ~[sqlite-jdbc-3.7.2.jar:?]
+	at org.sqlite.Conn.prepareStatement(Conn.java:383) ~[sqlite-jdbc-3.7.2.jar:?]
+	at main.dao.AbstractJDBCDao.getInstanceallDepencedObj1(AbstractJDBCDao.java:134) [bin/:?]
+	at test.dao.CourseDAOTest.testgetInstanceallDepencedObj1(CourseDAOTest.java:77) [bin/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_144]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_144]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_144]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_144]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47) [junit.jar:?]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit.jar:?]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44) [junit.jar:?]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit.jar:?]
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26) [junit.jar:?]
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27) [junit.jar:?]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271) [junit.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70) [junit.jar:?]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50) [junit.jar:?]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238) [junit.jar:?]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63) [junit.jar:?]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236) [junit.jar:?]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53) [junit.jar:?]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229) [junit.jar:?]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309) [junit.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192) [.cp/:?]
+2017-09-05T20:07:43,301 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course Java , duration=40
+2017-09-05T20:07:43,302 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=Java, duration=40, groups=0, professors=0]
+2017-09-05T20:07:43,302 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:07:43,303 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:07:43,304 [DEBUG] (    SqLiteCourseDao.java: 133) - Prepare Statement for insert to DB
+2017-09-05T20:07:43,304 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:07:43,710 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:07:43,711 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:07:43,711 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:07:43,711 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:07:43,712 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:07:43,717 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:07:43,718 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:07:43,718 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:07:43,719 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:07:43,720 [DEBUG] (    SqLiteCourseDao.java: 133) - Prepare Statement for insert to DB
+2017-09-05T20:07:43,720 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:07:43,821 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:07:43,821 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:07:43,821 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:07:43,822 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:07:43,822 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:07:43,828 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:07:43,828 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:07:43,831 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:07:43,831 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:07:43,832 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:07:43,832 [INFO ] (    AbstractJDBCDao.java: 229) - Delete Object Course10 [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:07:43,832 [DEBUG] (    AbstractJDBCDao.java: 231) - Open connection & Create prepared statement
+2017-09-05T20:07:43,834 [DEBUG] (    AbstractJDBCDao.java: 237) - Get count of deleted result set
+2017-09-05T20:07:43,983 [DEBUG] (    AbstractJDBCDao.java: 245) - statement & connection closed
+2017-09-05T20:07:44,024 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:07:44,024 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:07:44,027 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:07:44,027 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:07:44,027 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:07:44,031 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:07:44,032 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:07:44,034 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:07:44,034 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:07:44,035 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:07:44,036 [INFO ] (    AbstractJDBCDao.java: 257) - Update Object Course4 [name=Math, duration=12, groups=0, professors=0]
+2017-09-05T20:07:44,036 [DEBUG] (    AbstractJDBCDao.java: 259) - Open connection & Create prepared statement
+2017-09-05T20:07:44,038 [DEBUG] (    SqLiteCourseDao.java: 146) - Prepare Statement for update to DB
+2017-09-05T20:07:44,038 [DEBUG] (    AbstractJDBCDao.java: 264) - Get count of updates result set
+2017-09-05T20:07:44,138 [DEBUG] (    AbstractJDBCDao.java: 272) - statement & connection closed
+2017-09-05T20:07:44,143 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 4
+2017-09-05T20:07:44,143 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:07:44,145 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:07:44,145 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:07:44,145 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:07:44,145 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:09:41,711 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:09:41,714 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:09:41,714 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:09:41,801 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:09:41,803 [DEBUG] (    SqLiteCourseDao.java: 133) - Prepare Statement for insert to DB
+2017-09-05T20:09:41,804 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:09:41,897 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:09:41,898 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:09:41,898 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:09:41,898 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:09:41,899 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:09:41,904 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 11
+2017-09-05T20:09:41,904 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:09:41,906 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:09:41,906 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:09:41,906 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:09:41,906 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:09:41,908 [INFO ] (    AbstractJDBCDao.java: 131) - Get all ids related to Instance Course1 [name=JavaEE, duration=10, groups=0, professors=0] from DB
+2017-09-05T20:09:41,910 [DEBUG] (    AbstractJDBCDao.java: 137) - Get result set
+2017-09-05T20:09:41,911 [DEBUG] (    AbstractJDBCDao.java: 140) - Parse result set
+2017-09-05T20:09:41,911 [DEBUG] (    AbstractJDBCDao.java: 143) - statement&connection closed
+2017-09-05T20:09:41,915 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course Java , duration=40
+2017-09-05T20:09:41,916 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=Java, duration=40, groups=0, professors=0]
+2017-09-05T20:09:41,916 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:09:41,918 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:09:41,919 [DEBUG] (    SqLiteCourseDao.java: 133) - Prepare Statement for insert to DB
+2017-09-05T20:09:41,920 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:09:42,041 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:09:42,042 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:09:42,042 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:09:42,042 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:09:42,043 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:09:42,048 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:09:42,048 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:09:42,048 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:09:42,050 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:09:42,050 [DEBUG] (    SqLiteCourseDao.java: 133) - Prepare Statement for insert to DB
+2017-09-05T20:09:42,050 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:09:42,115 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:09:42,115 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:09:42,116 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:09:42,116 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:09:42,116 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:09:42,121 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:09:42,121 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:09:42,123 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:09:42,124 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:09:42,124 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:09:42,124 [INFO ] (    AbstractJDBCDao.java: 229) - Delete Object Course13 [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:09:42,125 [DEBUG] (    AbstractJDBCDao.java: 231) - Open connection & Create prepared statement
+2017-09-05T20:09:42,126 [DEBUG] (    AbstractJDBCDao.java: 237) - Get count of deleted result set
+2017-09-05T20:09:42,281 [DEBUG] (    AbstractJDBCDao.java: 245) - statement & connection closed
+2017-09-05T20:09:42,286 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:09:42,286 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:09:42,288 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:09:42,288 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:09:42,288 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:09:42,289 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:09:42,289 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:09:42,291 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:09:42,291 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:09:42,292 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:09:42,293 [INFO ] (    AbstractJDBCDao.java: 257) - Update Object Course4 [name=Math, duration=12, groups=0, professors=0]
+2017-09-05T20:09:42,293 [DEBUG] (    AbstractJDBCDao.java: 259) - Open connection & Create prepared statement
+2017-09-05T20:09:42,295 [DEBUG] (    SqLiteCourseDao.java: 146) - Prepare Statement for update to DB
+2017-09-05T20:09:42,295 [DEBUG] (    AbstractJDBCDao.java: 264) - Get count of updates result set
+2017-09-05T20:09:42,407 [DEBUG] (    AbstractJDBCDao.java: 272) - statement & connection closed
+2017-09-05T20:09:42,412 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 4
+2017-09-05T20:09:42,412 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:09:42,413 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:09:42,414 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:09:42,414 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:09:42,414 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:11:24,950 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:11:24,954 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:11:24,955 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:11:25,054 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:11:25,057 [DEBUG] (    SqLiteCourseDao.java: 133) - Prepare Statement for insert to DB
+2017-09-05T20:11:25,057 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:11:25,215 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:11:25,215 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:11:25,215 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:11:25,216 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:11:25,216 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:11:25,221 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 14
+2017-09-05T20:11:25,221 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:11:25,223 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:11:25,223 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:11:25,223 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:11:25,224 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:17:38,709 [INFO ] (    AbstractJDBCDao.java: 131) - Get all ids related to Instance Course1 [name=JavaEE, duration=10, groups=0, professors=0] from DB
+2017-09-05T20:17:54,499 [DEBUG] (    AbstractJDBCDao.java: 137) - Get result set
+2017-09-05T20:18:19,333 [DEBUG] (    AbstractJDBCDao.java: 140) - Parse result set
+2017-09-05T20:29:32,634 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:29:32,637 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:29:32,638 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:29:32,720 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:29:32,723 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:29:32,723 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:29:32,915 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:29:32,915 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:29:32,916 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:29:32,916 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:29:32,916 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:29:32,921 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 15
+2017-09-05T20:29:32,921 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:29:32,923 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:29:32,923 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:29:32,923 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:29:32,924 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:29:32,925 [INFO ] (    AbstractJDBCDao.java: 131) - Get all ids related to Instance Course1 [name=JavaEE, duration=10, groups=0, professors=0] from DB
+2017-09-05T20:29:32,927 [DEBUG] (    AbstractJDBCDao.java: 137) - Get result set
+2017-09-05T20:29:32,927 [DEBUG] (    AbstractJDBCDao.java: 140) - Parse result set
+2017-09-05T20:29:32,928 [DEBUG] (    SqLiteCourseDao.java: 126) - Parse Result Set from DB to Depended Object ids List
+2017-09-05T20:29:32,928 [DEBUG] (    AbstractJDBCDao.java: 143) - statement&connection closed
+2017-09-05T20:29:32,928 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course Java , duration=40
+2017-09-05T20:29:32,929 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=Java, duration=40, groups=0, professors=0]
+2017-09-05T20:29:32,929 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:29:32,930 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:29:32,930 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:29:32,931 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:29:33,077 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:29:33,077 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:29:33,078 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:29:33,078 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:29:33,078 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:29:33,083 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:29:33,084 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:29:33,084 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:29:33,086 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:29:33,086 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:29:33,086 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:29:33,177 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:29:33,177 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:29:33,178 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:29:33,178 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:29:33,178 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:29:33,182 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:29:33,183 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:29:33,185 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:29:33,185 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:29:33,185 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:29:33,186 [INFO ] (    AbstractJDBCDao.java: 229) - Delete Object Course17 [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:29:33,186 [DEBUG] (    AbstractJDBCDao.java: 231) - Open connection & Create prepared statement
+2017-09-05T20:29:33,188 [DEBUG] (    AbstractJDBCDao.java: 237) - Get count of deleted result set
+2017-09-05T20:29:33,281 [DEBUG] (    AbstractJDBCDao.java: 245) - statement & connection closed
+2017-09-05T20:29:33,286 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:29:33,286 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:29:33,288 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:29:33,288 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:29:33,289 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:29:33,289 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:29:33,290 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:29:33,291 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:29:33,292 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:29:33,292 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:29:33,293 [INFO ] (    AbstractJDBCDao.java: 257) - Update Object Course4 [name=Math, duration=12, groups=0, professors=0]
+2017-09-05T20:29:33,293 [DEBUG] (    AbstractJDBCDao.java: 259) - Open connection & Create prepared statement
+2017-09-05T20:29:33,295 [DEBUG] (    SqLiteCourseDao.java: 157) - Prepare Statement for update to DB
+2017-09-05T20:29:33,295 [DEBUG] (    AbstractJDBCDao.java: 264) - Get count of updates result set
+2017-09-05T20:29:33,376 [DEBUG] (    AbstractJDBCDao.java: 272) - statement & connection closed
+2017-09-05T20:29:33,381 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 4
+2017-09-05T20:29:33,381 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:29:33,383 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:29:33,383 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:29:33,383 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:29:33,383 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:30:08,396 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:30:08,400 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:30:08,400 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:30:08,490 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:30:08,493 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:30:08,493 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:30:08,813 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:30:08,813 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:30:08,814 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:30:08,814 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:30:08,814 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:30:08,971 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 18
+2017-09-05T20:30:08,971 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:30:08,973 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:30:08,973 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:30:08,974 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:30:08,974 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:30:11,045 [INFO ] (    AbstractJDBCDao.java: 131) - Get all ids related to Instance Course1 [name=JavaEE, duration=10, groups=0, professors=0] from DB
+2017-09-05T20:30:11,046 [DEBUG] (    AbstractJDBCDao.java: 137) - Get result set
+2017-09-05T20:30:11,047 [DEBUG] (    AbstractJDBCDao.java: 140) - Parse result set
+2017-09-05T20:30:11,047 [DEBUG] (    SqLiteCourseDao.java: 126) - Parse Result Set from DB to Depended Object ids List
+2017-09-05T20:30:11,047 [DEBUG] (    AbstractJDBCDao.java: 143) - statement&connection closed
+2017-09-05T20:30:11,048 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course Java , duration=40
+2017-09-05T20:30:11,048 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=Java, duration=40, groups=0, professors=0]
+2017-09-05T20:30:11,049 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:30:11,050 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:30:11,050 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:30:11,051 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:30:11,182 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:30:11,183 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:30:11,183 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:30:11,183 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:30:11,184 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:30:11,190 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:30:11,190 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:30:11,191 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:30:11,192 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:30:11,193 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:30:11,193 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:30:11,326 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:30:11,327 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:30:11,327 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:30:11,327 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:30:11,327 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:30:11,332 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:30:11,333 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:30:11,334 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:30:11,335 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:30:11,335 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:30:11,335 [INFO ] (    AbstractJDBCDao.java: 229) - Delete Object Course20 [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:30:11,336 [DEBUG] (    AbstractJDBCDao.java: 231) - Open connection & Create prepared statement
+2017-09-05T20:30:11,338 [DEBUG] (    AbstractJDBCDao.java: 237) - Get count of deleted result set
+2017-09-05T20:30:11,459 [DEBUG] (    AbstractJDBCDao.java: 245) - statement & connection closed
+2017-09-05T20:30:11,581 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:30:11,581 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:30:11,583 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:30:11,583 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:30:11,584 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:30:11,585 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:30:11,585 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:30:11,587 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:30:11,587 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:30:11,587 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:31:16,511 [INFO ] (    AbstractJDBCDao.java: 257) - Update Object Course4 [name=Math, duration=12, groups=0, professors=0]
+2017-09-05T20:31:17,870 [DEBUG] (    AbstractJDBCDao.java: 259) - Open connection & Create prepared statement
+2017-09-05T20:31:25,598 [DEBUG] (    SqLiteCourseDao.java: 157) - Prepare Statement for update to DB
+2017-09-05T20:31:29,102 [DEBUG] (    AbstractJDBCDao.java: 264) - Get count of updates result set
+2017-09-05T20:31:51,112 [DEBUG] (    AbstractJDBCDao.java: 272) - statement & connection closed
+2017-09-05T20:32:28,137 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 4
+2017-09-05T20:32:28,968 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:32:33,729 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:32:35,865 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:32:36,361 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:32:47,938 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:35:16,397 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:35:16,400 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:35:16,400 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:35:16,531 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:35:16,534 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:35:16,534 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:35:16,699 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:35:16,699 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:35:16,699 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:35:16,700 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:35:16,700 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:35:16,723 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 21
+2017-09-05T20:35:16,724 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:35:16,725 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:35:16,726 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:35:16,726 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:35:16,726 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:35:21,858 [INFO ] (    AbstractJDBCDao.java: 131) - Get all ids related to Instance Course1 [name=JavaEE, duration=10, groups=0, professors=0] from DB
+2017-09-05T20:35:21,860 [DEBUG] (    AbstractJDBCDao.java: 137) - Get result set
+2017-09-05T20:35:21,860 [DEBUG] (    AbstractJDBCDao.java: 140) - Parse result set
+2017-09-05T20:35:21,861 [DEBUG] (    SqLiteCourseDao.java: 126) - Parse Result Set from DB to Depended Object ids List
+2017-09-05T20:35:21,861 [DEBUG] (    AbstractJDBCDao.java: 143) - statement&connection closed
+2017-09-05T20:35:21,862 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course Java , duration=40
+2017-09-05T20:35:21,862 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=Java, duration=40, groups=0, professors=0]
+2017-09-05T20:35:21,862 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:35:21,864 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:35:21,864 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:35:21,864 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:35:22,013 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:35:22,013 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:35:22,014 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:35:22,014 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:35:22,014 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:35:22,020 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:35:22,020 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:35:22,021 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:35:22,022 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:35:22,023 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:35:22,023 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:35:22,179 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:35:22,179 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:35:22,180 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:35:22,180 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:35:22,180 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:35:22,185 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:35:22,185 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:35:22,187 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:35:22,188 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:35:22,188 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:35:22,188 [INFO ] (    AbstractJDBCDao.java: 229) - Delete Object Course23 [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:35:22,189 [DEBUG] (    AbstractJDBCDao.java: 231) - Open connection & Create prepared statement
+2017-09-05T20:35:22,191 [DEBUG] (    AbstractJDBCDao.java: 237) - Get count of deleted result set
+2017-09-05T20:35:22,350 [DEBUG] (    AbstractJDBCDao.java: 245) - statement & connection closed
+2017-09-05T20:35:22,354 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:35:22,355 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:35:22,357 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:35:22,357 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:35:22,357 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:35:22,358 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:35:22,359 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:35:22,360 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:35:22,360 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:35:22,361 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:35:26,241 [INFO ] (    AbstractJDBCDao.java: 257) - Update Object Course4 [name=Math, duration=12, groups=0, professors=0]
+2017-09-05T20:35:26,242 [DEBUG] (    AbstractJDBCDao.java: 259) - Open connection & Create prepared statement
+2017-09-05T20:35:26,244 [DEBUG] (    SqLiteCourseDao.java: 157) - Prepare Statement for update to DB
+2017-09-05T20:35:26,245 [DEBUG] (    AbstractJDBCDao.java: 264) - Get count of updates result set
+2017-09-05T20:35:26,398 [DEBUG] (    AbstractJDBCDao.java: 272) - statement & connection closed
+2017-09-05T20:35:29,081 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 4
+2017-09-05T20:35:29,082 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:35:29,084 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:35:29,085 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:35:29,085 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:35:29,086 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:37:04,266 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:37:04,269 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:37:04,269 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:37:04,356 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:37:04,359 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:37:04,359 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:37:04,540 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:37:04,540 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:37:04,541 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:37:04,541 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:37:04,541 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:37:04,546 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 24
+2017-09-05T20:37:04,546 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:37:04,548 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:37:04,549 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:37:04,549 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:37:04,549 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed
+2017-09-05T20:37:04,551 [INFO ] (    AbstractJDBCDao.java: 131) - Get all ids related to Instance Course1 [name=JavaEE, duration=10, groups=0, professors=0] from DB
+2017-09-05T20:37:04,553 [DEBUG] (    AbstractJDBCDao.java: 137) - Get result set
+2017-09-05T20:37:04,553 [DEBUG] (    AbstractJDBCDao.java: 140) - Parse result set
+2017-09-05T20:37:04,553 [DEBUG] (    SqLiteCourseDao.java: 126) - Parse Result Set from DB to Depended Object ids List
+2017-09-05T20:37:04,553 [DEBUG] (    AbstractJDBCDao.java: 143) - statement&connection closed
+2017-09-05T20:37:04,554 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course Java , duration=40
+2017-09-05T20:37:04,554 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=Java, duration=40, groups=0, professors=0]
+2017-09-05T20:37:04,554 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:37:04,556 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:37:04,556 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:37:04,556 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:37:04,868 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:37:04,869 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:37:04,869 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:37:04,869 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:37:04,869 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:37:04,874 [INFO ] (    SqLiteCourseDao.java:  63) - Creating new course JavaEE , duration=10
+2017-09-05T20:37:04,875 [INFO ] (    AbstractJDBCDao.java: 182) - Create Object Coursenull [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:37:04,875 [DEBUG] (    AbstractJDBCDao.java: 184) - Open connection
+2017-09-05T20:37:04,876 [DEBUG] (    AbstractJDBCDao.java: 186) - Create prepared statement
+2017-09-05T20:37:04,877 [DEBUG] (    SqLiteCourseDao.java: 144) - Prepare Statement for insert to DB
+2017-09-05T20:37:04,877 [DEBUG] (    AbstractJDBCDao.java: 190) - Get count of inserted result set
+2017-09-05T20:37:05,002 [DEBUG] (    AbstractJDBCDao.java: 199) - statement closed
+2017-09-05T20:37:05,002 [DEBUG] (    AbstractJDBCDao.java: 205) - Create prepared statement
+2017-09-05T20:37:05,002 [DEBUG] (    AbstractJDBCDao.java: 207) - Get result set
+2017-09-05T20:37:05,003 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:37:05,003 [DEBUG] (    AbstractJDBCDao.java: 217) - connection closed
+2017-09-05T20:37:05,008 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:37:05,008 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:37:05,010 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:37:05,010 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:37:05,010 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:37:05,011 [INFO ] (    AbstractJDBCDao.java: 229) - Delete Object Course26 [name=JavaEE, duration=10, groups=0, professors=0]
+2017-09-05T20:37:05,011 [DEBUG] (    AbstractJDBCDao.java: 231) - Open connection & Create prepared statement
+2017-09-05T20:37:05,013 [DEBUG] (    AbstractJDBCDao.java: 237) - Get count of deleted result set
+2017-09-05T20:37:05,135 [DEBUG] (    AbstractJDBCDao.java: 245) - statement & connection closed
+2017-09-05T20:37:05,139 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:37:05,139 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:37:05,141 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:37:05,141 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:37:05,142 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:37:05,143 [INFO ] (    AbstractJDBCDao.java: 157) - Get all objects from DB
+2017-09-05T20:37:05,143 [DEBUG] (    AbstractJDBCDao.java: 159) - Open connection & Create prepared statement & Get result set
+2017-09-05T20:37:05,144 [DEBUG] (    AbstractJDBCDao.java: 164) - Parse result set
+2017-09-05T20:37:05,145 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:37:05,145 [DEBUG] (    AbstractJDBCDao.java: 167) - resultset & statement & connection closed
+2017-09-05T20:37:05,146 [INFO ] (    AbstractJDBCDao.java: 257) - Update Object Course4 [name=Math, duration=12, groups=0, professors=0]
+2017-09-05T20:37:05,146 [DEBUG] (    AbstractJDBCDao.java: 259) - Open connection & Create prepared statement
+2017-09-05T20:37:05,147 [DEBUG] (    SqLiteCourseDao.java: 157) - Prepare Statement for update to DB
+2017-09-05T20:37:05,148 [DEBUG] (    AbstractJDBCDao.java: 264) - Get count of updates result set
+2017-09-05T20:37:05,279 [DEBUG] (    AbstractJDBCDao.java: 272) - statement & connection closed
+2017-09-05T20:37:05,283 [INFO ] (    AbstractJDBCDao.java:  94) - Get object from DB by key 4
+2017-09-05T20:37:05,283 [DEBUG] (    AbstractJDBCDao.java:  96) - Open connection & Create prepared statement
+2017-09-05T20:37:05,285 [DEBUG] (    AbstractJDBCDao.java: 101) - Get result set
+2017-09-05T20:37:05,285 [DEBUG] (    AbstractJDBCDao.java: 104) - Parse result set
+2017-09-05T20:37:05,285 [DEBUG] (    SqLiteCourseDao.java: 104) - Parse Result Set from DB to Object's List
+2017-09-05T20:37:05,285 [DEBUG] (    AbstractJDBCDao.java: 107) - statement&connection closed

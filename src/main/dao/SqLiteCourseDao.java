@@ -36,10 +36,12 @@ public class SqLiteCourseDao extends AbstractJDBCDao<Course, Integer>{
 	}
 
 	@Override
-	public String getDeleteQuery() {
-		return "DELETE FROM Courses WHERE id= ?;"
-				+ " DELETE FROM Professors_Courses WHERE course_id = ?;"
-				+ " DELETE FROM Groups_Courses WHERE course_id = ?;";
+	public List<String> getDeleteQuery() {
+		List<String> sql = new ArrayList<>();
+		sql.add("DELETE FROM Courses WHERE id= ?;");
+		sql.add("DELETE FROM Professors_Courses WHERE course_id = ?;");
+		sql.add("DELETE FROM Groups_Courses WHERE course_id = ?;");		
+		return sql;
 	}
 
 	public Course create(String name, Integer duration) throws PersistException {

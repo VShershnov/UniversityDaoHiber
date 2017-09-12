@@ -48,7 +48,7 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
      * <p/>
      * DELETE FROM [Table] WHERE id= ?;
      */
-    public abstract String getDeleteQuery();
+    public abstract List<String> getDeleteQuery();
 
     
     /**
@@ -180,31 +180,39 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
     }
    
     public void delete(T object) throws PersistException {
-        String sql = getDeleteQuery();
+        List<String> sql = getDeleteQuery();
         
         log.info("Delete Object " + object.toString());
-        
         log.debug("Open connection & Create prepared statement");
-        try (Connection connection = daoFactory.getConnection();
-        	PreparedStatement statement = connection.prepareStatement(sql)) {            
-            
-        	statement.setObject(1, object.getId());
-        	statement.setObject(1, object.getId());
-        	statement.setObject(1, object.getId());
+        try (Connection connection = daoFactory.getConnection()) {
+        	PreparedStatement statement = null;        	
+        	connection.setAutoCommit(false);
+        	 
+        	try {
+	            for (int i =0; i<sql.size(); i++){
+	            	statement = connection.prepareStatement(sql.get(i));
+	            	statement.setObject(1, object.getId());
+	            	log.debug("add " + i + " query to transaction. Get count of deleted result set");
+	                statement.executeUpdate();
+	            }
+	            
+	            log.debug("Execute transaction");
+	        	connection.commit();	                
+	        } catch (Exception e) {
+	        	log.debug("Rollback transaction");
+	        	connection.rollback();
+	        	log.error("Cannot exec transaction delete Object " + object.toString(), e);
+	            throw new PersistException(e);
+	        }
+	        finally{
+	        	connection.setAutoCommit(true);
+	        	log.debug("statement closed");
+		        statement.close();
+	        }
         	
-        	log.debug("Get count of deleted result set");
-            statement.execute();
-           	/*
-            if (count != 1){
-            	String s = "On delete modify more then 1 record: ";
-        		log.error(s);
-                throw new PersistException(s + count);
-           	}
-           	*/
-        
-        log.debug("statement & connection closed");
-        } catch (Exception e) {
-        	log.debug("statement & connection closed");
+        log.debug("connection closed");
+        } catch (Exception e) {   
+        	log.debug("connection closed");
         	log.error("Cannot delete Object " + object.toString(), e);
             throw new PersistException(e);
         }
