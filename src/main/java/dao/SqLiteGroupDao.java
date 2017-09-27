@@ -13,13 +13,49 @@ public class SqLiteGroupDao extends AbstractJDBCDao<Group, Integer>{
 	public String getSelectQuery() {
 		return "SELECT id, name FROM 'Groups'";
 	}
+	
+	/**
+	 * ¬озвращает sql запрос дл€ получени€ всех id св€занного обьекта из таблицы св€зей ForeignKey.
+	 * <p/>
+	 * SELECT dependentObj_id FROM [FK_Table] WHERE Instance_id = ?;
+	 *  
+	 */
+	@Override
+	public String getSelectDependentObjQuery(Class<?> K1, Class<?> T){
+		return "SELECT " + K1.getSimpleName() + "_id FROM " + T.getSimpleName() + "s_" 
+						+ K1.getSimpleName() + "s WHERE " + T.getSimpleName() + "_id = ?";
+	}
+	
+	/**
+	 * ¬озвращает sql запрос дл€ добавлени€ записи о id св€занного обьекта в таблицу св€зей ForeignKey.
+	 * <p/>
+	 * INSERT INTO PROFESSORS_COURSES (professor_id, course_id) VALUES (?, ?);
+	 *  
+	 */
+	@Override
+	public String getInsertDependentObjQuery(Class<?> K1, Class<?> T) {		
+		return "INSERT INTO " + T.getSimpleName() + "s_" 
+				+ K1.getSimpleName() + "s (" + K1.getSimpleName() + "_id, " + T.getSimpleName() + "_id) VALUES (?, ?);";
+	}
 
+	/**
+	 * ¬озвращает sql запрос дл€ добавлени€ записи о id св€занного обьекта в таблицу св€зей ForeignKey.
+	 * <p/>
+	 * INSERT INTO PROFESSORS_COURSES (professor_id, course_id) VALUES (?, ?);
+	 *  
+	 */
+	@Override
+	public String getDeleteDependentObjQuery(Class<?> K1, Class<?> T) {		
+		return "DELETE FROM " + T.getSimpleName() + "s_"  + K1.getSimpleName() + "s WHERE " 
+				+ K1.getSimpleName() + "_id=? AND " + T.getSimpleName() + "_id=? ;";
+	}
+	
 	@Override
 	public String getCreateQuery() {
 		return "INSERT INTO 'Groups' (name) \n" +
                 "VALUES (?);";
-	}
-
+	}	
+	
 	@Override
 	public String getUpdateQuery() {
 		 return "UPDATE 'Groups' SET name = ? WHERE id= ?;";
@@ -27,13 +63,15 @@ public class SqLiteGroupDao extends AbstractJDBCDao<Group, Integer>{
 
 	@Override
 	public List<String> getDeleteQuery() {
-		List<String> sql = new ArrayList<>();		
-		sql.add("DELETE FROM 'Groups' WHERE id= ?;");
-		return sql;		
+		List<String> sql = new ArrayList<>();
+		sql.add("DELETE FROM Groups WHERE id= ?;");
+		sql.add("DELETE FROM Groups_Students WHERE group_id = ?;");
+		sql.add("DELETE FROM Groups_Courses WHERE group_id = ?;");		
+		return sql;
 	}
 	
-	public Group create() throws PersistException{
-		Group g = new Group();
+	public Group create(String name) throws PersistException{
+		Group g = new Group(null, name);
         return persist(g);
 	}
 

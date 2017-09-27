@@ -369,7 +369,7 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
 	 * INSERT INTO PROFESSORS_COURSES (professor_id, course_id) VALUES (?, ?);
 	 *  
 	 */
-	private String getInsertDependentObjQuery(Class<?> K1, Class<?> T) {		
+	public String getInsertDependentObjQuery(Class<?> K1, Class<?> T) {		
 		return "INSERT INTO " + K1.getSimpleName() + "s_" 
 				+ T.getSimpleName() + "s (" + K1.getSimpleName() + "_id, " + T.getSimpleName() + "_id) VALUES (?, ?);";
 	}
@@ -380,7 +380,7 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
 	 * INSERT INTO PROFESSORS_COURSES (professor_id, course_id) VALUES (?, ?);
 	 *  
 	 */
-	private String getDeleteDependentObjQuery(Class<?> K1, Class<?> T) {		
+	public String getDeleteDependentObjQuery(Class<?> K1, Class<?> T) {		
 		return "DELETE FROM " + K1.getSimpleName() + "s_"  + T.getSimpleName() + "s WHERE " 
 				+ K1.getSimpleName() + "_id=? AND " + T.getSimpleName() + "_id=? ;";
 	}
@@ -391,7 +391,7 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
 	 * SELECT dependentObj_id FROM [FK_Table] WHERE Instance_id = ?;
 	 *  
 	 */    
-	private String getSelectDependentObjQuery(Class<?> K1, Class<?> T){
+	public String getSelectDependentObjQuery(Class<?> K1, Class<?> T){
 		return "SELECT " + K1.getSimpleName() + "_id FROM " + K1.getSimpleName() + "s_" 
 						+ T.getSimpleName() + "s WHERE " + T.getSimpleName() + "_id = ?";
 	}
