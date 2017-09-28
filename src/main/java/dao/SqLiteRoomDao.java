@@ -21,24 +21,24 @@ public class SqLiteRoomDao extends AbstractJDBCDao<Room, Integer>{
 
 	@Override
 	public String getSelectQuery() {
-		return "SELECT id, capacity, address FROM Rooms";
+		return "SELECT id, capacity, address FROM \"Rooms\"";
 	}
 
 	@Override
 	public String getCreateQuery() {
-		return "INSERT INTO Rooms (capacity, address) \n" +
+		return "INSERT INTO \"Rooms\" (capacity, address) \n" +
                 "VALUES (?, ?);";
 	}
 
 	@Override
 	public String getUpdateQuery() {
-		 return "UPDATE Rooms SET capacity = ?, address = ? WHERE id= ?;";
+		 return "UPDATE \"Rooms\" SET capacity = ?, address = ? WHERE id= ?;";
 	}
 
 	@Override
 	public List<String> getDeleteQuery() {
 		List<String> sql = new ArrayList<>();
-		sql.add("DELETE FROM Rooms WHERE id= ?;");
+		sql.add("DELETE FROM \"Rooms\" WHERE id= ?;");
 		return sql;
 	}
 

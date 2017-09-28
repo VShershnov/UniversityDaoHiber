@@ -11,7 +11,7 @@ public class SqLiteGroupDao extends AbstractJDBCDao<Group, Integer>{
 	
 	@Override
 	public String getSelectQuery() {
-		return "SELECT id, name FROM 'Groups'";
+		return "SELECT id, name FROM \"Groups\"";
 	}
 	
 	/**
@@ -52,21 +52,21 @@ public class SqLiteGroupDao extends AbstractJDBCDao<Group, Integer>{
 	
 	@Override
 	public String getCreateQuery() {
-		return "INSERT INTO 'Groups' (name) \n" +
+		return "INSERT INTO \"Groups\" (name) \n" +
                 "VALUES (?);";
 	}	
 	
 	@Override
 	public String getUpdateQuery() {
-		 return "UPDATE 'Groups' SET name = ? WHERE id= ?;";
+		 return "UPDATE \"Groups\" SET name = ? WHERE id= ?;";
 	}
 
 	@Override
 	public List<String> getDeleteQuery() {
-		List<String> sql = new ArrayList<>();
-		sql.add("DELETE FROM Groups WHERE id= ?;");
+		List<String> sql = new ArrayList<>();		
 		sql.add("DELETE FROM Groups_Students WHERE group_id = ?;");
 		sql.add("DELETE FROM Groups_Courses WHERE group_id = ?;");		
+		sql.add("DELETE FROM \"Groups\" WHERE id= ?;");
 		return sql;
 	}
 	

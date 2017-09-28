@@ -55,7 +55,7 @@ public class GroupDAOTest {
 	
 	@Test
 	public void testGetByPK() throws PersistException {
-		 int id = dao.create("IPSA").getId();
+		 int id = dao.create("FL").getId();
 		 group = dao.getByPK(id);
 	        Assert.assertNotNull(group);
 	}

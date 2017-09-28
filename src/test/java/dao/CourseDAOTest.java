@@ -54,7 +54,7 @@ public class CourseDAOTest {
 	
 	@Test
 	public void testGetByPK() throws PersistException {
-		 int id = dao.create("JavaEE", 10).getId();
+		 int id = dao.create("JavaFX", 10).getId();
 		 course = dao.getByPK(id);
 	        Assert.assertNotNull(course);
 	}

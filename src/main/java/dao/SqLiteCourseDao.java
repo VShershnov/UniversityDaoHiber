@@ -21,26 +21,26 @@ public class SqLiteCourseDao extends AbstractJDBCDao<Course, Integer>{
 
 	@Override
 	public String getSelectQuery() {
-		return "SELECT id, name, duration FROM Courses";
+		return "SELECT id, name, duration FROM \"Courses\"";
 	}
 	
 	@Override
 	public String getCreateQuery() {
-		return "INSERT INTO Courses (name, duration) \n" +
+		return "INSERT INTO \"Courses\" (name, duration) \n" +
                 "VALUES (?, ?);";
 	}
 
 	@Override
 	public String getUpdateQuery() {
-		return "UPDATE Courses SET name = ?, duration = ? WHERE id= ?;";
+		return "UPDATE \"Courses\" SET name = ?, duration = ? WHERE id= ?;";
 	}
 
 	@Override
 	public List<String> getDeleteQuery() {
-		List<String> sql = new ArrayList<>();
-		sql.add("DELETE FROM Courses WHERE id= ?;");
+		List<String> sql = new ArrayList<>();		
 		sql.add("DELETE FROM Professors_Courses WHERE course_id = ?;");
-		sql.add("DELETE FROM Groups_Courses WHERE course_id = ?;");		
+		sql.add("DELETE FROM Groups_Courses WHERE course_id = ?;");
+		sql.add("DELETE FROM \"Courses\" WHERE id= ?;");
 		return sql;
 	}
 

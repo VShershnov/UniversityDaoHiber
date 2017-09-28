@@ -11,8 +11,10 @@ public class DaoFactory{
 	
 	private final  Logger log = LogManager.getLogger(this.getClass().getPackage().getName());
 	
-    private String url = "jdbc:sqlite:UniversityDAO.db";//URL אהנוס"
-    private String driver = "org.sqlite.JDBC";//ָלÿ הנאיגונא
+	private String url = "jdbc:postgresql://[::1]:5432/University?user=postgres&password=1111";
+	private String driver = "org.postgresql.Driver";//ָלÿ הנאיגונא
+   // private String url = "jdbc:sqlite:UniversityDAO.db";//URL אהנוס"
+    //private String driver = "org.sqlite.JDBC";//ָלÿ הנאיגונא
 	
 	public Connection getConnection() throws PersistException{
 		Connection connection = null;
