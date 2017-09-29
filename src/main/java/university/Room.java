@@ -1,12 +1,53 @@
 package main.java.university;
 
+import java.io.Serializable;
+
+import javax.jws.soap.InitParam;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.OptimisticLockType;
+
+
+
+
+
+
+
+
+
+
+
 import main.java.dao.Identified;
 
-public class Room implements Identified<Integer>{
+@Entity
+@org.hibernate.annotations.Entity(optimisticLock = OptimisticLockType.ALL)
+@Table(name = "Rooms", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "id"),
+		@UniqueConstraint(columnNames = "capacity"),
+		@UniqueConstraint(columnNames = "address"),
+})
+public class Room implements Identified<Integer>, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
+	
+	@Column(name = "capacity", unique = false, nullable = false)
 	private Integer capacity;
 	
+	@Column(name = "address", unique = false, nullable = false)
 	private String address;
 
 	public Room(){
