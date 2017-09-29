@@ -163,25 +163,7 @@ public abstract class AbstractJDBCDao<T extends Identified <PK>, PK extends Inte
 	        statement.close();
 	        
 	        persistInstance = getByPK(id);
-	        /*
-	        // ѕолучаем только что вставленную запись
-	        sql = getSelectQuery() + " WHERE id = " + id + ";";
-        
-	        log.debug("Create prepared statement");
-	        statement = connection.prepareStatement(sql);
-	        log.debug("Get result set");
-	        ResultSet rs = statement.executeQuery();            
-            List<T> list = parseResultSet(rs);
-            if ((list == null) || (list.size() != 1)){
-            	String s = "Exception on findByPK new persist data.";
-            	log.error(s);
-                throw new PersistException(s);
-            }
-            
-           
-            persistInstance = list.iterator().next();
-        
-         */
+	        
 	        
         log.debug("connection closed");
         } catch (Exception e) {
